@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import { auth } from '@/server/auth';
 
+import { UserAvatar } from '../svgs/avatar/user';
 import { Logo } from '../svgs/logo';
-import { UserAvatar } from '../svgs/user';
 import { buttonStyles } from '../ui/button';
 import {
 	DropdownMenu,

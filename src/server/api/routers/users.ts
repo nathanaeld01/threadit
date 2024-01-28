@@ -1,9 +1,10 @@
-import { hash } from "bcryptjs";
+import { hash } from 'bcryptjs';
 
-import { RegisterValidator } from "@/lib/validators/auth";
-import { SetupValidator } from "@/lib/validators/user";
+import { RegisterValidator } from '@/lib/validators/auth';
+import { SetupValidator } from '@/lib/validators/user';
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { Username } from '@/lib/validators/api';
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc';
 
 export const userRouter = createTRPCRouter({
 	createUser: publicProcedure
@@ -26,7 +27,7 @@ export const userRouter = createTRPCRouter({
 					});
 				}
 
-				throw new Error("Invalid input");
+				throw new Error('Invalid input');
 			} catch (error) {
 				throw error;
 			}
@@ -45,7 +46,7 @@ export const userRouter = createTRPCRouter({
 					});
 
 					if (user) {
-						throw new Error("Email already exists");
+						throw new Error('Email already exists');
 					}
 				}
 
@@ -56,7 +57,7 @@ export const userRouter = createTRPCRouter({
 					});
 
 					if (user) {
-						throw new Error("Username already exists");
+						throw new Error('Username already exists');
 					}
 				}
 
@@ -66,6 +67,19 @@ export const userRouter = createTRPCRouter({
 					where: { id: ctx.session.user.id },
 					data: updateData,
 				});
+			} catch (error) {
+				throw error;
+			}
+		}),
+	getUserInfo: publicProcedure
+		.input(Username)
+		.query(async ({ ctx, input }) => {
+			try {
+				const user = await ctx.db.user.findUnique({
+					where: { username: input },
+				});
+
+				return user;
 			} catch (error) {
 				throw error;
 			}

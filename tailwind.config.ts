@@ -55,6 +55,9 @@ export default {
 				border: 'color-mix(in srgb, var(--border-base), transparent calc(100% - 100% * <alpha-value>))',
 				hover: 'color-mix(in srgb, var(--border-hover), transparent calc(100% - 100% * <alpha-value>))',
 			},
+			stroke: {
+				border: 'color-mix(in srgb, var(--border-base), transparent calc(100% - 100% * <alpha-value>))',
+			},
 			ringColor: {
 				ring: 'color-mix(in srgb, var(--border-ring), transparent calc(100% - 100% * <alpha-value>))',
 			},
@@ -85,6 +88,9 @@ export default {
 				'accordion-up': 'accordionUp 0.2s ease-out',
 				'collapsible-up': 'collapsibleUp 0.2s ease-out',
 				'collapsible-down': 'collapsibleDown 0.2s ease-out',
+			},
+			height: {
+				layout: 'calc(100vh - 8rem)',
 			},
 		},
 	},

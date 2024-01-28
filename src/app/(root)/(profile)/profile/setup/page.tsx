@@ -1,12 +1,12 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { auth } from "@/server/auth";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { auth } from '@/server/auth';
 
-import { ProfileSetup } from "../../_components/profile-setup";
+import { ProfileSetup } from '../_components/profile-setup';
 
 export const metadata = {
-	title: "Profile Setup",
+	title: 'Profile Setup',
 };
 
 const Page = async () => {
@@ -15,7 +15,7 @@ const Page = async () => {
 		session?.user?.username && session?.user?.email && session?.user?.name;
 
 	if (isSetup) {
-		redirect("/profile");
+		redirect('/profile');
 	}
 
 	return (

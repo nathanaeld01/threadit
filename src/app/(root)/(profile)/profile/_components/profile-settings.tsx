@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { getDirtyData } from "@/lib/utils";
-import { type SettingsType, SettingsValidator } from "@/lib/validators/user";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { getDirtyData } from '@/lib/utils';
+import { type SettingsType, SettingsValidator } from '@/lib/validators/user';
 
 type Props = {
 	profile: {
@@ -24,11 +24,11 @@ type Props = {
 export const ProfileSettings = ({ profile }: Props) => {
 	const defaultValues: SettingsType = {};
 
-	if (profile.name) defaultValues.name = profile.name ?? "";
+	if (profile.name) defaultValues.name = profile.name ?? '';
 
 	const form = useForm<SettingsType>({
 		resolver: zodResolver(SettingsValidator),
-		mode: "onChange",
+		mode: 'onChange',
 		defaultValues,
 	});
 
@@ -38,7 +38,7 @@ export const ProfileSettings = ({ profile }: Props) => {
 		formState: { isDirty },
 	} = form;
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit(data => {
 		const values = getDirtyData(data, defaultValues);
 		console.log(values);
 	});
@@ -61,7 +61,7 @@ export const ProfileSettings = ({ profile }: Props) => {
 					)}
 				/>
 				<div className="mt-6 flex justify-end">
-					<Button type="submit" size="sm" disabled={!isDirty}>
+					<Button type="submit" disabled={!isDirty}>
 						Save
 					</Button>
 				</div>

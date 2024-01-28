@@ -1,19 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Settings } from "lucide-react";
+import { Settings } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { CommunityAvatar } from "@/components/svgs/community";
-import { buttonStyles } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CommunityAvatar } from '@/components/svgs/avatar/community';
+import { buttonStyles } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn, formatDate } from "@/lib/utils";
-import { api } from "@/trpc/server";
+} from '@/components/ui/collapsible';
+import { cn, formatDate } from '@/lib/utils';
+import { api } from '@/trpc/server';
 
-import { Subscription } from "../../_components/subscription";
+import { notFound } from 'next/navigation';
+import { Subscription } from '../../_components/subscription';
 
 type Props = {
 	params: {
@@ -62,16 +63,32 @@ const RuleItem = ({ index, title, children }: RuleProps) =>
 		</div>
 	);
 
+export const generateMetadata = async ({ params: { slug } }: Props) => {
+	const data = await api.community.getCommunity.query(slug);
+
+	return data
+		? {
+				title: `${data.community.name ?? `c/${slug}`}`,
+		  }
+		: {
+				title: 'Community Not Found',
+		  };
+};
+
 const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 	const data = await api.community.getCommunity.query(slug);
 
-	return !data ? null : (
+	if (!data) notFound();
+
+	const { community, memberCount, isCreator, isSubscribed } = data;
+
+	return (
 		<>
 			<section className="flex max-h-40 w-full flex-col">
 				<div className="relative h-24 overflow-hidden bg-muted/50">
-					{data.community.wallpaper && (
+					{community.wallpaper && (
 						<Image
-							src={data.community.wallpaper}
+							src={community.wallpaper}
 							alt="Community Wallpaper"
 							fill
 						/>
@@ -83,27 +100,30 @@ const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 							<div className="relative h-14">
 								<CommunityAvatar
 									className="absolute bottom-0"
-									avatar={data.community.avatar}
+									avatar={community.avatar}
 								/>
 							</div>
 							<div className="flex flex-col gap-2 py-2 pl-24">
-								<h1 className="text-xl font-bold leading-none">c/{slug}</h1>
+								<h1 className="text-xl font-bold leading-none">
+									c/{slug}
+								</h1>
 								<p className="text-sm leading-none">c/{slug}</p>
 							</div>
 						</div>
 						<div className="flex items-center">
-							{!data.isCreator && (
+							{!isCreator && (
 								<Subscription
-									initialValue={data.isSubscribed}
-									id={data.community.id}
+									initialValue={isSubscribed}
+									id={community.id}
 								/>
 							)}
-							{data.isCreator && (
+							{isCreator && (
 								<Link
 									className={cn(
 										buttonStyles({
-											variant: "tertiary",
-											className: "h-8 rounded-full gap-2",
+											variant: 'secondary',
+											outlined: true,
+											className: 'h-8 rounded-full gap-2',
 										}),
 									)}
 									href={`/c/${slug}/settings`}
@@ -121,15 +141,19 @@ const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 				<div className="sidebar">
 					<Card>
 						<CardHeader className="p-4">
-							<CardTitle className="text-base">About c/{slug}</CardTitle>
+							<CardTitle className="text-base">
+								About c/{slug}
+							</CardTitle>
 						</CardHeader>
 						<CardContent className="space-y-4 p-4 pt-0">
 							<dl className="divide-y divide-border text-sm leading-6">
 								<AboutItem title="Created">
-									{formatDate(data.community.createdAt)}
+									{formatDate(community.createdAt)}
 								</AboutItem>
-								<AboutItem title="Members">{data.memberCount}</AboutItem>
-								{data.isCreator && (
+								<AboutItem title="Members">
+									{memberCount}
+								</AboutItem>
+								{isCreator && (
 									<div className="gap-x-4 py-2 text-center text-foreground/70 xl:py-3">
 										You created this community.
 									</div>
@@ -138,9 +162,8 @@ const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 							<Link
 								href={`/c/${slug}/submit`}
 								className={buttonStyles({
-									variant: "secondary",
+									variant: 'secondary',
 									fullWidth: true,
-									size: "sm",
 								})}
 							>
 								Create Post
@@ -149,7 +172,9 @@ const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 					</Card>
 					<Card>
 						<CardHeader className="p-4">
-							<CardTitle className="text-base">Community Rules</CardTitle>
+							<CardTitle className="text-base">
+								Community Rules
+							</CardTitle>
 						</CardHeader>
 						<CardContent className="space-y-4 p-4 pt-0">
 							<dl className="divide-y divide-border text-sm leading-6 *:py-2 first:*:pt-0 last:*:pb-0 xl:*:py-2.5">

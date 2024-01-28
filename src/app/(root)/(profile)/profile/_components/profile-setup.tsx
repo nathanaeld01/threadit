@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/sonner";
-import { getDirtyData } from "@/lib/utils";
-import { type SetupType, SetupValidator } from "@/lib/validators/user";
-import { api } from "@/trpc/react";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/sonner';
+import { getDirtyData } from '@/lib/utils';
+import { type SetupType, SetupValidator } from '@/lib/validators/user';
+import { api } from '@/trpc/react';
 
 type Props = {
 	profile: {
@@ -28,13 +28,14 @@ type Props = {
 export const ProfileSetup = ({ profile }: Props) => {
 	const defaultValues: typeof profile = {};
 
-	if (profile.username == null) defaultValues.username = profile.username ?? "";
-	if (profile.email === null) defaultValues.email = profile.email ?? "";
-	if (profile.name === null) defaultValues.name = profile.name ?? "";
+	if (profile.username == null)
+		defaultValues.username = profile.username ?? '';
+	if (profile.email === null) defaultValues.email = profile.email ?? '';
+	if (profile.name === null) defaultValues.name = profile.name ?? '';
 
 	const form = useForm<SetupType>({
 		resolver: zodResolver(SetupValidator),
-		mode: "onChange",
+		mode: 'onChange',
 		defaultValues,
 	});
 
@@ -46,13 +47,13 @@ export const ProfileSetup = ({ profile }: Props) => {
 
 	const { mutateAsync, isLoading } = api.user.setupUser.useMutation();
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit(data => {
 		const values = getDirtyData(data, dirtyFields);
 
 		return toast.promise(mutateAsync(values), {
-			loading: "Saving...",
-			success: "Saved!",
-			error: "Failed to save",
+			loading: 'Saving...',
+			success: 'Saved!',
+			error: 'Failed to save',
 		});
 	});
 
@@ -73,7 +74,10 @@ export const ProfileSetup = ({ profile }: Props) => {
 										u/
 									</div>
 									<FormControl {...field}>
-										<Input className="pl-8" autoComplete="off" />
+										<Input
+											className="pl-8"
+											autoComplete="off"
+										/>
 									</FormControl>
 								</div>
 							</FormItem>
@@ -109,7 +113,7 @@ export const ProfileSetup = ({ profile }: Props) => {
 					/>
 				)}
 				<div className="mt-6 flex justify-end">
-					<Button type="submit" size="sm" disabled={!isDirty || isLoading}>
+					<Button type="submit" disabled={!isDirty || isLoading}>
 						Submit
 					</Button>
 				</div>
