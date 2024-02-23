@@ -1,11 +1,9 @@
 import { ChevronLeftIcon } from 'lucide-react';
 
-import { buttonStyles } from '@/components/ui/button';
+import Link from '@/components/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { auth } from '@/server/auth';
 
-import Link from '@/components/link';
 import { ProfileAppearance } from '../_components/profile-appeaance';
 import { ProfileSettings } from '../_components/profile-settings';
 

@@ -2,15 +2,9 @@
 
 import { useForm } from 'react-hook-form';
 
-import { UserAvatar } from '@/components/svgs/user';
+import { UserAvatar } from '@/components/svgs/avatar/user';
 import { Button } from '@/components/ui/button';
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from '@/components/ui/form';
+import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { fileToBase64 } from '@/lib/utils';
 

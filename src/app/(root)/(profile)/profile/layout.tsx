@@ -1,13 +1,3 @@
-import Link from '@/components/link';
-import { UserAvatar } from '@/components/svgs/user';
-import { buttonStyles } from '@/components/ui/button';
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-} from '@/components/ui/card';
-import { formatDate } from '@/lib/utils';
 import { auth } from '@/server/auth';
 import { UserInfo } from '../_components/user-info';
 
