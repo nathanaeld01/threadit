@@ -1,5 +1,5 @@
 import Link from '@/components/link';
-import { UserAvatar } from '@/components/svgs/user';
+import { UserAvatar } from '@/components/svgs/avatar/user';
 import {
 	Card,
 	CardContent,
