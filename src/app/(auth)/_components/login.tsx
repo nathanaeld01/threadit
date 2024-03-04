@@ -38,17 +38,14 @@ export const LoginForm = ({ callbackUrl }: Props) => {
 	} = form;
 
 	const onSubmit = handleSubmit(async data => {
-		toast.promise(
-			login(data, { redirect: true, redirectTo: callbackUrl ?? '/' }),
-			{
-				loading: 'Signing in...',
-				success: 'Signed in!',
-				error: error => {
-					console.log(error);
-					return 'Error signing in';
-				},
+		toast.promise(login(data, { redirect: true, redirectTo: '/' }), {
+			loading: 'Signing in...',
+			success: 'Signed in!',
+			error: error => {
+				console.log(error);
+				return 'Error signing in';
 			},
-		);
+		});
 	});
 
 	return (

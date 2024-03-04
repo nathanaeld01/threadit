@@ -1,23 +1,25 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+
+import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { CreateCommunityValidator } from "@/lib/validators/forms";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { CreateCommunityValidator } from '@/lib/validators/forms';
 
 export const CreateCommunity = () => {
 	const form = useForm({
 		resolver: zodResolver(CreateCommunityValidator),
-		mode: "onChange",
+		mode: 'onChange',
 		defaultValues: {
-			slug: "",
+			slug: '',
 		},
 	});
 
@@ -27,7 +29,7 @@ export const CreateCommunity = () => {
 		formState: { isDirty, isValid },
 	} = form;
 
-	const onSubmit = handleSubmit(async (data) => {
+	const onSubmit = handleSubmit(async data => {
 		console.log(data);
 	});
 
@@ -58,10 +60,12 @@ export const CreateCommunity = () => {
 					/>
 					<ul className="pb-2 text-xs">
 						<li className="list-inside list-disc">
-							Community name including capitalization cannot be changed.
+							Community name including capitalization cannot be
+							changed.
 						</li>
 						<li className="list-inside list-disc">
-							Special characters, except dashes (-), are not allowed.
+							Special characters, except dashes (-), are not
+							allowed.
 						</li>
 					</ul>
 				</div>
