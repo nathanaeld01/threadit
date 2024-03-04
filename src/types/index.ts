@@ -1,3 +1,8 @@
-type IconProps = Omit<React.SVGAttributes<SVGSVGElement>, "viewBox">;
+import { type Editor } from '@tiptap/react';
 
-export type { IconProps };
+type IconProps = Omit<React.SVGAttributes<SVGSVGElement>, 'viewBox'>;
+type ToggleProps = {
+	editor: Editor | null;
+};
+
+export type { IconProps, ToggleProps };
