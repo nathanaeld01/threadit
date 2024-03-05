@@ -5,6 +5,7 @@ import { ListIcon } from 'lucide-react';
 export const UnorderedToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Unordered List"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('bulletList')}
 			onPressedChange={() =>

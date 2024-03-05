@@ -5,6 +5,7 @@ import { UnderlineIcon } from 'lucide-react';
 export const UnderlineToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Underline"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('underline')}
 			onPressedChange={() =>

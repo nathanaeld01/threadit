@@ -97,3 +97,8 @@ html {
 .toast {
 	@apply flex w-full items-center gap-2 rounded-md border p-4 transition-colors duration-300 ease-in-out;
 }
+
+.tiptap p.is-editor-empty:first-child::before {
+	@apply text-muted content-[attr(data-placeholder)] float-left h-0 pointer-events-none;
+	/* color: #adb5bd; */
+}

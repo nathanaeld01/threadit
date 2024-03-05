@@ -5,6 +5,7 @@ import { BoldIcon } from 'lucide-react';
 export const BoldToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Bold"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('bold')}
 			onPressedChange={() => editor?.chain().focus().toggleBold().run()}

@@ -10,6 +10,7 @@ export const CodeToggle = ({ editor }: ToggleProps) => {
 			onPressedChange={() =>
 				editor?.chain().focus().toggleCodeBlock().run()
 			}
+			title="Code Block"
 			disabled={editor?.isActive('heading')}
 		>
 			<CodeIcon />

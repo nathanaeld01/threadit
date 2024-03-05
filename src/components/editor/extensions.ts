@@ -1,45 +1,41 @@
+'use client';
+
 import { mergeAttributes } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 
-import Blockquote from '@tiptap/extension-blockquote';
-import Bold from '@tiptap/extension-bold';
+import CountPrimitive from '@tiptap/extension-character-count';
+import ListItemPrimitive from '@tiptap/extension-list-item';
+import PlaceholderPrimitive from '@tiptap/extension-placeholder';
+
+import HeadingPrimitive, { Level } from '@tiptap/extension-heading';
+
+import BoldPrimitive from '@tiptap/extension-bold';
+import ItalicPrimitive from '@tiptap/extension-italic';
+import StrikePrimitive from '@tiptap/extension-strike';
+import UnderlinePrimitive from '@tiptap/extension-underline';
+
+import CodePrimitive from '@tiptap/extension-code-block-lowlight';
+import LinkPrimitive from '@tiptap/extension-link';
+
+import BlockquotePrimitive from '@tiptap/extension-blockquote';
 import BulletList from '@tiptap/extension-bullet-list';
-import CharacterCount from '@tiptap/extension-character-count';
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import Heading from '@tiptap/extension-heading';
-import Italic from '@tiptap/extension-italic';
-import Link from '@tiptap/extension-link';
-import ListItem from '@tiptap/extension-list-item';
 import OrderedList from '@tiptap/extension-ordered-list';
-import Placeholder from '@tiptap/extension-placeholder';
-import Underline from '@tiptap/extension-underline';
 
-import { common, createLowlight } from 'lowlight';
+export function starterKit() {
+	return StarterKit.configure({});
+}
 
-const lowlight = createLowlight(common);
-
-export const commentExtensions = [
-	StarterKit,
-	CharacterCount.configure({}),
-	Placeholder.configure({
-		placeholder: 'Post a comment...',
+export const count = () => CountPrimitive.configure({});
+export const placeholder = (text: string) =>
+	PlaceholderPrimitive.configure({
+		placeholder: text,
 		emptyEditorClass: 'is-editor-empty',
-	}),
-	Bold.configure(),
-	Italic.configure(),
-	BulletList.configure({
-		HTMLAttributes: {
-			class: '',
-		},
-	}),
-	OrderedList.configure({
-		HTMLAttributes: {
-			class: '',
-		},
-	}),
-	ListItem.configure(),
-	Heading.configure({
-		levels: [5],
+	});
+export const listItem = () => ListItemPrimitive.configure({});
+
+export const heading = (levels: Level[]) =>
+	HeadingPrimitive.configure({
+		levels,
 	}).extend({
 		renderHTML({ HTMLAttributes }) {
 			return [
@@ -50,21 +46,24 @@ export const commentExtensions = [
 				0,
 			];
 		},
-	}),
-	Link.configure({}),
-	Underline.configure({}),
-	CodeBlockLowlight.extend({
-		addKeyboardShortcuts() {
-			return {
-				Tab: () =>
-					this.editor.isActive('codeBlock') &&
-					this.editor?.commands.insertContent('\t'),
-			};
+	});
+
+export const bold = () => BoldPrimitive.configure({});
+export const italic = () => ItalicPrimitive.configure({});
+export const underline = () => UnderlinePrimitive.configure({});
+export const strike = () => StrikePrimitive.configure({});
+
+export const link = () => LinkPrimitive.configure({});
+export const bullet = () =>
+	BulletList.configure({
+		HTMLAttributes: {
+			class: '',
 		},
-	}).configure({
-		lowlight,
-		languageClassPrefix: 'language-',
-		HTMLAttributes: { class: 'hljs p-4' },
-	}),
-	Blockquote.configure(),
-];
+	});
+export const order = () =>
+	OrderedList.configure({
+		HTMLAttributes: {
+			class: '',
+		},
+	});
+export const blockquote = () => BlockquotePrimitive.configure({});

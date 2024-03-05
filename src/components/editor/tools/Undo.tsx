@@ -5,8 +5,10 @@ import { Undo2Icon } from 'lucide-react';
 export const UndoAction = ({ editor }: ToggleProps) => {
 	return (
 		<Button
-			className="w-8 h-8 p-2 rounded-sm"
 			variant="ghost"
+			title="Undo"
+			className="w-8 h-8 p-2 rounded-sm"
+			disabled={!editor?.can().undo()}
 			onClick={() => editor?.chain().focus().undo().run()}
 		>
 			<Undo2Icon className="w-5 h-5" />

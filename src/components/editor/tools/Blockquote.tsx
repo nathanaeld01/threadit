@@ -5,6 +5,7 @@ import { QuoteIcon } from 'lucide-react';
 export const BlockquoteToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Blockquote"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('blockquote')}
 			onClick={() => editor?.chain().focus().toggleBlockquote().run()}

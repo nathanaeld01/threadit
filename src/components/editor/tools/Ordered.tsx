@@ -5,6 +5,7 @@ import { ListOrderedIcon } from 'lucide-react';
 export const OrderedToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Ordered List"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('orderedList')}
 			onPressedChange={() =>

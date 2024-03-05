@@ -5,6 +5,7 @@ import { StrikethroughIcon } from 'lucide-react';
 export const StrikeToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
+			title="Strikethrough"
 			className="w-8 h-8 p-2 rounded-sm"
 			pressed={editor?.isActive('strike')}
 			onPressedChange={() => editor?.chain().focus().toggleStrike().run()}

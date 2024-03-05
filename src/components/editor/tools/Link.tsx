@@ -37,9 +37,10 @@ export const LinkToggle = ({ editor }: ToggleProps) => {
 			<PopoverTrigger asChild>
 				<Button
 					className={cn(
-						'w-8 h-8 p-2 rounded-sm',
-						existingLink && 'bg-accent text-accent-foreground',
+						'w-8 h-8 p-2 rounded-sm text-foreground/70',
+						existingLink && 'bg-accent text-foreground',
 					)}
+					title="Link"
 					variant="ghost"
 				>
 					<Link2Icon className="w-5 h-5" />

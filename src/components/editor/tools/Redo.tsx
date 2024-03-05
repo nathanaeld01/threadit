@@ -7,6 +7,7 @@ export const RedoAction = ({ editor }: ToggleProps) => {
 		<Button
 			className="w-8 h-8 p-2 rounded-sm"
 			variant="ghost"
+			disabled={!editor?.can().redo()}
 			onClick={() => editor?.chain().focus().redo().run()}
 		>
 			<Redo2Icon className="w-5 h-5" />

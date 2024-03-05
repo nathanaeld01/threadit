@@ -1,12 +1,12 @@
 import { Editor } from '@/components/editor';
-import { commentExtensions } from '@/components/editor/extensions';
+import { comments } from '@/components/editor/extension';
 
 export const metadata = {
 	title: 'Submit a Post',
 };
 
 const Page = () => {
-	return <Editor extensions={commentExtensions} />;
+	return <Editor extensions={comments} />;
 };
 
 export default Page;
