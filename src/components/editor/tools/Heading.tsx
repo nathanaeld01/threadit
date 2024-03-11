@@ -1,3 +1,8 @@
+import { Level } from '@tiptap/extension-heading';
+import { type Editor } from '@tiptap/react';
+import { ChevronDownIcon } from 'lucide-react';
+import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import {
 	Popover,
@@ -7,44 +12,39 @@ import {
 import { Toggle } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
 import { type ToggleProps } from '@/types';
-import { type Editor } from '@tiptap/react';
-import { ChevronDownIcon } from 'lucide-react';
-import { useState } from 'react';
 
-interface ItemProps {
-	editor: Editor | null;
-	level: 1 | 2 | 3 | 4 | 5 | 6;
-}
+type HeadingProps = {
+	levels?: Level[] | Level;
+};
 
-const HeadingItem = ({ editor, level }: ItemProps) => (
-	<Toggle
-		className="w-full h-8 flex p-2 justify-start rounded-none"
-		pressed={editor?.isActive('heading', { level })}
-		onClick={() => editor?.chain().focus().toggleHeading({ level }).run()}
-	>
-		Heading {level}
-	</Toggle>
-);
-
-export const HeadingToggle = ({ editor }: ToggleProps) => {
+export const HeadingToggle = ({
+	levels = 5,
+	editor,
+}: ToggleProps & HeadingProps) => {
 	const [toggle, setToggle] = useState(false);
 	const level = editor?.getAttributes('heading').level;
 	const isParagraph = editor?.isActive('paragraph');
 	const isHeading = editor?.isActive('heading');
 
+	const headingHandler = (level: Level) => {
+		isHeading
+			? editor?.chain().focus().setParagraph().run()
+			: editor?.chain().focus().toggleHeading({ level }).run();
+	};
+
 	return (
 		<Popover onOpenChange={setToggle}>
 			<PopoverTrigger asChild>
 				<Button
-					className="w-32 h-8 flex p-2 justify-between border border-border rounded-sm"
+					className="w-32 h-10 flex p-2 justify-between rounded-none"
 					variant="ghost"
 				>
 					<span className="w-full text-start">
-						{isParagraph
-							? 'Paragraph'
-							: isHeading
-							  ? `Heading ${level}`
-							  : undefined}
+						{isParagraph && 'Paragraph'}
+						{isHeading &&
+							(typeof levels === 'number'
+								? 'Title'
+								: `Heading ${level}`)}
 					</span>
 					<ChevronDownIcon
 						className={cn(
@@ -67,12 +67,25 @@ export const HeadingToggle = ({ editor }: ToggleProps) => {
 				>
 					Paragraph
 				</Toggle>
-				<HeadingItem editor={editor} level={1} />
-				<HeadingItem editor={editor} level={2} />
-				<HeadingItem editor={editor} level={3} />
-				<HeadingItem editor={editor} level={4} />
-				<HeadingItem editor={editor} level={5} />
-				<HeadingItem editor={editor} level={6} />
+				{typeof levels === 'number' ? (
+					<Toggle
+						className="w-full h-8 flex p-2 justify-start rounded-none"
+						pressed={isHeading}
+						onClick={() => headingHandler(levels)}
+					>
+						Title
+					</Toggle>
+				) : (
+					levels.map(level => (
+						<Toggle
+							className="w-full h-8 flex p-2 justify-start rounded-none"
+							pressed={editor?.isActive('heading', { level })}
+							onClick={() => headingHandler(level)}
+						>
+							Heading {level}
+						</Toggle>
+					))
+				)}
 			</PopoverContent>
 		</Popover>
 	);
