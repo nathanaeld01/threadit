@@ -94,7 +94,7 @@ const CommunityLayout = async ({ params: { slug }, children }: Props) => {
 						/>
 					)}
 				</div>
-				<div className="h-16 w-full bg-secondary">
+				<div className="h-16 w-full bg-card">
 					<div className="wrapper flex h-full justify-between max-sm:px-4 md:justify-start md:gap-8">
 						<div className="flex h-full w-fit">
 							<div className="relative h-14">

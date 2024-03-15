@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/sonner";
-import { RegisterValidator } from "@/lib/validators/auth";
-import { api } from "@/trpc/react";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/sonner';
+import { RegisterValidator } from '@/lib/validators/auth';
+import { api } from '@/trpc/react';
 
 export const RegisterForm = () => {
 	const form = useForm({
 		resolver: zodResolver(RegisterValidator),
-		mode: "onChange",
+		mode: 'onChange',
 		defaultValues: {
-			name: "",
-			email: "",
-			password: "",
-			username: "",
+			name: '',
+			email: '',
+			password: '',
+			username: '',
 		},
 	});
 
@@ -38,14 +38,14 @@ export const RegisterForm = () => {
 	const { mutateAsync, isLoading } = api.user.createUser.useMutation();
 	const router = useRouter();
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit(data => {
 		toast.promise(mutateAsync(data), {
-			loading: "Registering user...",
+			loading: 'Registering user...',
 			success: () => {
-				router.push("/login");
-				return "Successfully registered new account!";
+				router.push('/login');
+				return 'Successfully registered new account!';
 			},
-			error: "Failed to register user!",
+			error: 'Failed to register user!',
 		});
 	});
 
@@ -121,12 +121,13 @@ export const RegisterForm = () => {
 					)}
 				/>
 				<Button
-					size="sm"
 					type="submit"
 					className="mt-4 w-full"
 					disabled={!isDirty || !isValid || isLoading}
 				>
-					{isLoading && <Loader2 className="mr-2 size-4 animate-spin" />}
+					{isLoading && (
+						<Loader2 className="mr-2 size-4 animate-spin" />
+					)}
 					Register
 				</Button>
 			</form>
