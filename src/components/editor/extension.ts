@@ -8,22 +8,23 @@ import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import ListItem from '@tiptap/extension-list-item';
 import Placeholder from '@tiptap/extension-placeholder';
 
+import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import Heading from '@tiptap/extension-heading';
+import Image from '@tiptap/extension-image';
 import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
 import OrderedList from '@tiptap/extension-ordered-list';
 import Strike from '@tiptap/extension-strike';
 import Underline from '@tiptap/extension-underline';
 
-import Blockquote from '@tiptap/extension-blockquote';
 import { common, createLowlight } from 'lowlight';
 const lowlight = createLowlight(common);
 
 const Base = [StarterKit, CharacterCount, ListItem];
 
-export const commentEditorExts = [
+export const postExtensions = [
 	...Base,
 	Bold,
 	Italic,
@@ -31,6 +32,7 @@ export const commentEditorExts = [
 	Strike,
 	Link,
 	Blockquote,
+	Image,
 	CodeBlockLowlight.extend({
 		addKeyboardShortcuts() {
 			return {

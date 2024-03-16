@@ -1,7 +1,11 @@
 'use client';
 
-import type { Level } from '@tiptap/extension-heading';
-import { type AnyExtension, EditorContent, useEditor } from '@tiptap/react';
+import {
+	type AnyExtension,
+	EditorContent,
+	type JSONContent,
+	useEditor,
+} from '@tiptap/react';
 import { Loader2Icon } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -9,27 +13,26 @@ import { cn } from '@/lib/utils';
 import { BlockquoteToggle } from './tools/Blockquote';
 import { BoldToggle } from './tools/Bold';
 import { CodeToggle } from './tools/Code';
-import { HeadingToggle } from './tools/Heading';
+import { Image } from './tools/Image';
 import { ItalicsToggle } from './tools/Italics';
 import { LinkToggle } from './tools/Link';
 import { OrderedToggle } from './tools/Ordered';
 import { RedoAction } from './tools/Redo';
 import { StrikeToggle } from './tools/Strike';
+import { TitleToggle } from './tools/Title';
 import { UnderlineToggle } from './tools/Underline';
 import { UndoAction } from './tools/Undo';
 import { UnorderedToggle } from './tools/Unordered';
 
 type EditorProps = {
 	extensions: AnyExtension[];
+	onChange: (content: JSONContent) => void;
 	className?: string;
 	editorClassname?: string;
 };
 
 export const Editor = forwardRef<HTMLDivElement, EditorProps>(
-	({ extensions, className, editorClassname }, ref) => {
-		if (extensions.length === 0)
-			throw new Error('Editor must have at least one extension.');
-
+	({ extensions, className, editorClassname, onChange }, ref) => {
 		const editor = useEditor({
 			extensions,
 			editorProps: {
@@ -40,6 +43,7 @@ export const Editor = forwardRef<HTMLDivElement, EditorProps>(
 					),
 				},
 			},
+			onUpdate: ({ editor }) => onChange(editor.getJSON()),
 		});
 
 		const hasHeading = extensions.some(ext => ext.name === 'heading');
@@ -48,15 +52,14 @@ export const Editor = forwardRef<HTMLDivElement, EditorProps>(
 		const hasItalic = extensions.some(ext => ext.name === 'italic');
 		const hasUnderline = extensions.some(ext => ext.name === 'underline');
 		const hasStrike = extensions.some(ext => ext.name === 'strike');
-		const hasItem1 = hasBold || hasItalic || hasUnderline || hasStrike;
 
 		const hasLink = extensions.some(ext => ext.name === 'link');
 		const hasCode = extensions.some(ext => ext.name === 'codeBlock');
 		const hasUnordered = extensions.some(ext => ext.name === 'bulletList');
 		const hasOrdered = extensions.some(ext => ext.name === 'orderedList');
 		const hasBlockquote = extensions.some(ext => ext.name === 'blockquote');
-		const hasItem2 =
-			hasLink || hasCode || hasUnordered || hasOrdered || hasBlockquote;
+
+		const hasImage = extensions.some(ext => ext.name === 'image');
 
 		return (
 			<div className="grid grid-rows-[auto_1fr] border border-border rounded-md divide-y divide-border">
@@ -67,10 +70,10 @@ export const Editor = forwardRef<HTMLDivElement, EditorProps>(
 					</div>
 					{hasHeading && (
 						<div className="flex items-center">
-							<HeadingToggle editor={editor} />
+							<TitleToggle editor={editor} />
 						</div>
 					)}
-					{hasItem1 && (
+					{(hasBold || hasItalic || hasUnderline || hasStrike) && (
 						<div className="flex items-center p-1 gap-1">
 							{hasBold && <BoldToggle editor={editor} />}
 							{hasItalic && <ItalicsToggle editor={editor} />}
@@ -80,7 +83,11 @@ export const Editor = forwardRef<HTMLDivElement, EditorProps>(
 							{hasStrike && <StrikeToggle editor={editor} />}
 						</div>
 					)}
-					{hasItem2 && (
+					{(hasLink ||
+						hasCode ||
+						hasUnordered ||
+						hasOrdered ||
+						hasBlockquote) && (
 						<div className="flex items-center p-1 gap-1">
 							{hasLink && <LinkToggle editor={editor} />}
 							{hasCode && <CodeToggle editor={editor} />}
@@ -91,6 +98,11 @@ export const Editor = forwardRef<HTMLDivElement, EditorProps>(
 							{hasBlockquote && (
 								<BlockquoteToggle editor={editor} />
 							)}
+						</div>
+					)}
+					{hasImage && (
+						<div className="flex items-center p-1 gap-1">
+							<Image editor={editor} />
 						</div>
 					)}
 				</div>

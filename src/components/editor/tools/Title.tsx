@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/popover';
 import { Toggle } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
-import { type ToggleProps } from '@/types';
+import type { ToggleProps } from '@/types';
 import { ChevronDownIcon } from 'lucide-react';
 import { useState } from 'react';
 
@@ -27,7 +27,7 @@ export const TitleToggle = ({ editor }: ToggleProps) => {
 							? 'Paragraph'
 							: isTitle
 							  ? 'Title'
-							  : undefined}
+							  : 'Paragraph'}
 					</span>
 					<ChevronDownIcon
 						className={cn(

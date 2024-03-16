@@ -6,7 +6,7 @@ export const ItalicsToggle = ({ editor }: ToggleProps) => {
 	return (
 		<Toggle
 			title="Italics"
-			className="w-8 h-8 p-2 rounded-sm"
+			className="size-8 p-2 rounded-sm"
 			pressed={editor?.isActive('italic')}
 			onPressedChange={() => editor?.chain().focus().toggleItalic().run()}
 			disabled={editor?.isActive('heading')}
