@@ -39,12 +39,7 @@ export default tseslint.config(
 					},
 				},
 			],
-			"@typescript-eslint/no-unnecessary-condition": [
-				"error",
-				{
-					allowConstantLoopConditions: true,
-				},
-			],
+			"@typescript-eslint/no-unnecessary-condition": "off",
 			"@typescript-eslint/no-non-null-assertion": "off",
 			"perfectionist/sort-imports": [
 				"error",
