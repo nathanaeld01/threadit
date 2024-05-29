@@ -10,9 +10,6 @@ export default tseslint.config(
 	...tseslint.configs.stylisticTypeChecked,
 	perfectionistNatural,
 	{
-		ignores: ["**/*.config.js"],
-	},
-	{
 		files: ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.jsx"],
 		plugins: {
 			perfectionist: perfectionistPlugin,

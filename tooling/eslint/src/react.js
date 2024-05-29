@@ -11,6 +11,18 @@ export default [
 		rules: {
 			...reactPlugin.configs["jsx-runtime"].rules,
 			...hooksPlugin.configs.recommended.rules,
+			"perfectionist/sort-imports": [
+				"error",
+				{
+					groups: [
+						"side-effect-style",
+						["builtin", "external"],
+						["internal", "parent", "sibling", "index"],
+						["type"],
+					],
+					"internal-pattern": ["@/**"],
+				},
+			],
 		},
 		languageOptions: {
 			globals: {
