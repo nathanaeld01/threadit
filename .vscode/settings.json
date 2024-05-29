@@ -7,5 +7,5 @@
 	"files.exclude": {
 		"**/node_modules": true
 	},
-	"conventionalCommits.scopes": ["workspace"]
+	"conventionalCommits.scopes": ["ws:packages", "ws:tooling"]
 }
