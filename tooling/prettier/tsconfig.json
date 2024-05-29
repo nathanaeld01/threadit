@@ -1,5 +1,5 @@
 {
-	"extends": "@threadit/typscript",
+	"extends": "@threadit/typescript",
 	"compilerOptions": {
 		"tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
 	},
