@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import { cn } from "@threadit/utils";
+import { cn } from "@threadit/utils/class";
 import * as React from "react";
 import {
 	Controller,

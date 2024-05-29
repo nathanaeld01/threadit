@@ -2,7 +2,7 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import { cn } from "@threadit/utils";
+import { cn } from "@threadit/utils/class";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 
 import { DropdownContext, useDropdown } from "../context/dropdown-context";

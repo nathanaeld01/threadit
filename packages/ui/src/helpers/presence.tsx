@@ -1,7 +1,7 @@
 "use client";
 
 import { Slot } from "@radix-ui/react-slot";
-import { clsx } from "@threadit/utils";
+import { clsx } from "@threadit/utils/class";
 import { useEffect, useRef, useState } from "react";
 
 interface Props {

@@ -1,6 +1,6 @@
 /* eslint-disable perfectionist/sort-objects */
 import { Slot } from "@radix-ui/react-slot";
-import { cn } from "@threadit/utils";
+import { cn } from "@threadit/utils/class";
 import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 

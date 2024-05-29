@@ -1,4 +1,4 @@
-import { cn } from "@threadit/utils";
+import { cn } from "@threadit/utils/class";
 import * as React from "react";
 
 const Card = React.forwardRef<
@@ -7,7 +7,7 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<div
 		className={cn(
-			"border-border bg-card text-foreground overflow-hidden rounded-lg border shadow-sm",
+			"overflow-hidden rounded-lg border border-border bg-card text-foreground shadow-sm",
 			className,
 		)}
 		ref={ref}
@@ -43,7 +43,7 @@ const CardDescription = React.forwardRef<
 	HTMLParagraphElement,
 	React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-	<p className={cn("text-muted text-sm", className)} ref={ref} {...props} />
+	<p className={cn("text-sm text-muted", className)} ref={ref} {...props} />
 ));
 CardDescription.displayName = "CardDescription";
 
