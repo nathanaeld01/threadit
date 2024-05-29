@@ -1,7 +1,11 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ]
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"files.exclude": {
+		"**/node_modules": true
+	},
+	"conventionalCommits.scopes": ["workspace"]
 }

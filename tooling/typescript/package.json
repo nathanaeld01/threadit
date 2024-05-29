@@ -1,0 +1,9 @@
+{
+	"name": "@threadit/typescript",
+	"version": "0.0.0",
+	"private": true,
+	"exports": {
+		".": "./base.json",
+		"./internal": "./internal-package.json"
+	}
+}

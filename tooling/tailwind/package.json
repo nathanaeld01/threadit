@@ -1,0 +1,26 @@
+{
+	"name": "@threadit/tailwind",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules",
+		"format": "prettier --check . --ignore-path ../../.gitignore",
+		"lint": "eslint",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
+		"tailwindcss": "^3.4.3",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@threadit/eslint": "workspace:*",
+		"@threadit/prettier": "workspace:*",
+		"@threadit/typescript": "workspace:*",
+		"prettier": "^3.2.5",
+		"typescript": "^5.4.5"
+	},
+	"prettier": "@threadit/prettier"
+}

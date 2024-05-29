@@ -8,11 +8,14 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"devDependencies": {
+		"@threadit/prettier": "workspace:*",
+		"@threadit/eslint": "workspace:*",
 		"prettier": "^3.2.5",
-		"turbo": "latest"
+		"turbo": "^1.13.3"
 	},
-	"packageManager": "pnpm@9.0.6",
+	"packageManager": "pnpm@9.1.3",
 	"engines": {
-		"node": ">=20.12.2"
-	}
+		"node": "^18.18.0 || >=20.0.0"
+	},
+	"prettier": "@threadit/prettier"
 }
