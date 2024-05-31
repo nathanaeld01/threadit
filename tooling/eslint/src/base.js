@@ -2,6 +2,8 @@ import tseslint from "typescript-eslint";
 import eslint from "@eslint/js";
 import perfectionistPlugin from "eslint-plugin-perfectionist";
 import perfectionistNatural from "eslint-plugin-perfectionist/configs/recommended-natural";
+import prettierConfig from "eslint-config-prettier";
+import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
 
 export default tseslint.config(
 	eslint.configs.recommended,
@@ -56,4 +58,6 @@ export default tseslint.config(
 		linterOptions: { reportUnusedDisableDirectives: true },
 		languageOptions: { parserOptions: { project: true } },
 	},
+	prettierConfig,
+	prettierPluginRecommended,
 );

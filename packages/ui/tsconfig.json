@@ -5,6 +5,6 @@
 		"jsx": "preserve",
 		"tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
 	},
-	"include": ["**/*.ts", "**/*.tsx", "eslint.config.js"],
+	"include": ["**/*.ts", "**/*.tsx", "**/*.js"],
 	"exclude": ["node_modules"]
 }
