@@ -1,6 +1,6 @@
 import baseTailwind from "@threadit/tailwind";
 
 export default {
-	content: ["./src/**/*.tsx", "./src/**/*.ts"],
+	content: [...baseTailwind.content, "../../packages/ui/**/*.{ts,tsx}"],
 	presets: [baseTailwind],
 };

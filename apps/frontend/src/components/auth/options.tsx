@@ -2,7 +2,7 @@
 
 import { Button } from "@threadit/ui/button";
 
-import { Icon } from "@/components/icons";
+import { Icon } from "@/components/shared/icons";
 
 interface Props {
 	callbackUrl?: string;

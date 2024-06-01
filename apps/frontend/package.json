@@ -10,17 +10,18 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@threadit/ui": "workspace:*",
+		"@threadit/utils": "workspace:*",
 		"next": "14.2.3",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"@threadit/ui": "workspace:*",
-		"@threadit/utils": "workspace:*"
+		"remixicon": "^4.2.0"
 	},
 	"devDependencies": {
 		"@threadit/eslint": "workspace:*",
 		"@threadit/prettier": "workspace:*",
-		"@threadit/typescript": "workspace:*",
 		"@threadit/tailwind": "workspace:*",
+		"@threadit/typescript": "workspace:*",
 		"@types/node": "^20.12.13",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
