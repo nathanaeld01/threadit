@@ -6,17 +6,17 @@ import { usePathname } from "next/navigation";
 
 interface Props {
 	className?: string;
-	overrideHide?: boolean;
+	showText?: boolean;
 }
 
-const Logo = ({ className, overrideHide = false }: Props) => {
+const Logo = ({ className, showText = false }: Props) => {
 	const pathname = usePathname();
 
 	return (
 		<Link
 			className={cn(
 				"flex h-full items-center justify-center",
-				overrideHide ? "aspect-auto" : "aspect-square md:aspect-auto",
+				showText ? "aspect-auto" : "aspect-square md:aspect-auto",
 				className,
 			)}
 			href={pathname === "/" ? "#" : "/"}
@@ -35,7 +35,7 @@ const Logo = ({ className, overrideHide = false }: Props) => {
 			<div
 				className={cn(
 					"font-poppins ml-2 text-2xl font-bold md:block",
-					!overrideHide && "hidden",
+					!showText && "hidden",
 				)}
 			>
 				<span className="text-foreground ml-1">Thread</span>

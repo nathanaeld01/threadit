@@ -8,12 +8,12 @@ type Props = Readonly<{
 export default ({ children }: Props) => {
 	return (
 		<>
-			<nav className="fixed left-0 top-0 h-[60px] w-full py-2.5">
-				<div className="container mx-auto flex h-full">
-					<Logo />
+			<nav className="h-15 fixed left-0 top-0 w-full py-2.5">
+				<div className="container mx-auto flex h-full px-4">
+					<Logo showText />
 				</div>
 			</nav>
-			<div className="size-dv flex">
+			<div className="size-dv pb-15 flex">
 				<AuthWrapper>{children}</AuthWrapper>
 			</div>
 		</>
