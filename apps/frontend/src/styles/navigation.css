@@ -1,0 +1,11 @@
+.navigation {
+	@apply border-b-border bg-card fixed z-50 h-16 w-full border-b;
+}
+
+.navigation > .nav-wrapper {
+	@apply relative mx-auto flex h-full w-full items-center px-4 md:w-[90%];
+}
+
+.navigation .nav-header {
+	@apply flex w-full items-center md:w-fit;
+}

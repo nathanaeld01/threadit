@@ -3,10 +3,8 @@ import plugin from "tailwindcss/plugin";
 
 export default {
 	content: [
-		"./src/**/*.tsx",
-		"./src/**/*.ts",
-		"./src/**/*.js",
-		"./src/**/*.jsx",
+		"./src/**/*.{jsx,js,ts,tsx}",
+		"../../packages/ui/src/**/*.{jsx,js,ts,tsx}",
 	],
 	plugins: [
 		plugin(({ addUtilities }) => {
