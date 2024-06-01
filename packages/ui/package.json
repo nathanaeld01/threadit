@@ -3,11 +3,19 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"sideEffects": [
+		"**/*.css"
+	],
 	"exports": {
-		"./*": "./src/ui/*.tsx"
+		"./*": "./src/ui/*.tsx",
+		"./styles.css": "./dist/index.css"
 	},
 	"scripts": {
-		"ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"
+		"ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different",
+		"build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+		"lint": "eslint src/",
+		"dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@radix-ui/react-collapsible": "^1.0.3",
@@ -26,6 +34,8 @@
 		"@threadit/tailwind": "workspace:*",
 		"@threadit/typescript": "workspace:*",
 		"@types/react": "^18.3.3",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
 		"tailwindcss": "^3.4.3"
 	},

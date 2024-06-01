@@ -1,5 +1,6 @@
 const nextConfig = {
 	eslint: { ignoreDuringBuilds: true },
+	reactStrictMode: true,
 	transpilePackages: [
 		"@threadit/ui",
 		"@threadit/utils",

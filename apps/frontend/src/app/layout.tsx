@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@threadit/ui/styles.css";
 import "remixicon/fonts/remixicon.css";
 
 import type { Metadata } from "next";

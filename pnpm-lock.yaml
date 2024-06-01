@@ -127,6 +127,12 @@ importers:
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.38
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -218,9 +224,6 @@ importers:
 
   tooling/tailwind:
     dependencies:
-      postcss:
-        specifier: ^8.4.38
-        version: 8.4.38
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3
