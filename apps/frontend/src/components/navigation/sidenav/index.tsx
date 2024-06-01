@@ -31,11 +31,7 @@ const Sidenav = ({ communities, recents }: Props) => {
 		<SidenavWrapper>
 			<SheetTrigger asChild>
 				<Button className="size-9 p-1 md:hidden" variant="ghost">
-					<Icon
-						className="flex size-10"
-						icon="menu-line"
-						iconClasses="m-auto text-2xl"
-					/>
+					<Icon className="text-2xl" icon="menu-line" />
 				</Button>
 			</SheetTrigger>
 			<SheetContent className="flex max-w-[350px] flex-col" side="left">
