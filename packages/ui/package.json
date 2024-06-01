@@ -3,6 +3,9 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"exports": {
+		"./*": "./src/ui/*.tsx"
+	},
 	"scripts": {
 		"ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"
 	},
