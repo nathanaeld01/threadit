@@ -5,6 +5,7 @@ export default {
 	content: [
 		"./src/**/*.{jsx,js,ts,tsx}",
 		"../../packages/ui/src/**/*.{jsx,js,ts,tsx}",
+		"../../packages/forms/src/**/*.{jsx,js,ts,tsx}",
 	],
 	plugins: [
 		plugin(({ addUtilities }) => {

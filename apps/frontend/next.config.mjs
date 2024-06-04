@@ -13,6 +13,7 @@ const nextConfig = {
 		"@threadit/ui",
 		"@threadit/utils",
 		"@threadit/validators",
+		"@threadit/forms",
 	],
 	typescript: { ignoreBuildErrors: true },
 };
