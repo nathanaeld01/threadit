@@ -1,0 +1,48 @@
+.post {
+	@apply border-border bg-card hover:border-border-hover grid grid-rows-[1fr_auto] border-y transition-[border] duration-200 sm:rounded-md sm:border-x;
+}
+
+.post > .post-wrapper {
+	@apply grid grid-rows-[auto_1fr];
+}
+
+/****** Post Header ******/
+.post > .post-wrapper > .post-header {
+	@apply flex w-full items-center gap-2.5 p-2 text-xs leading-none;
+}
+
+.post .post-community,
+.post .post-author,
+.post .post-time {
+	@apply text-foreground inline-flex w-fit items-center;
+}
+
+.post .post-community {
+	@apply justify-center font-semibold;
+}
+
+.post .post-time {
+	@apply justify-center;
+}
+
+.post .post-dot {
+	@apply text-muted select-none;
+}
+
+/****** Post Content ******/
+.post > .post-wrapper > .post-content {
+	@apply grid max-md:grid-rows-[1fr_auto] md:grid-cols-[1fr_auto] md:px-2 md:pb-2;
+}
+
+.post .post-title {
+	@apply order-2 text-base hover:underline max-md:p-2 md:order-1 md:pr-4 md:text-lg md:font-medium;
+}
+
+.post .post-image {
+	@apply md:h-30 order-1 w-full md:order-2;
+}
+
+/****** Post Footer ******/
+.post > .post-footer {
+	@apply flex h-9 w-full overflow-hidden;
+}
