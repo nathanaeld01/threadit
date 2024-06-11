@@ -7,7 +7,7 @@ interface Props {
 
 export const TopicFlare = ({ children, href }: Props) => (
 	<Link
-		className="hover:bg-background flex items-center justify-center rounded-lg px-3 py-1.5 text-sm leading-none"
+		className="hover:bg-muted/15 flex items-center justify-center rounded-lg px-3 py-1.5 text-sm leading-none"
 		href={href}
 	>
 		{children}
