@@ -1,4 +1,18 @@
-import { Button } from "@threadit/ui/button";
+import { Button, buttonStyles } from "@threadit/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@threadit/ui/card";
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "@threadit/ui/collapsible";
+import { cn } from "@threadit/utils/class";
+import Link from "next/link";
 
 import { Header, HeaderItem } from "@/components/community/header";
 import { CommunityAvatar } from "@/components/shared/avatars/community";
@@ -9,6 +23,17 @@ interface Props {
 	params: {
 		slug: string;
 	};
+}
+
+interface AboutProps {
+	children: React.ReactNode;
+	title: string;
+}
+
+interface RuleProps {
+	children?: React.ReactNode;
+	index: number;
+	title: string;
 }
 
 export default ({ children, params: { slug } }: Props) => {
@@ -76,8 +101,87 @@ export default ({ children, params: { slug } }: Props) => {
 			</div>
 			<div className="wrapper layout">
 				<div className="content">{children}</div>
-				<div className="sidebar">{slug}</div>
+				<div className="sidebar">
+					<Card>
+						<CardHeader className="border-b-border bg-tertiary-hover border-b p-4">
+							<CardTitle className="text-base">Destiny</CardTitle>
+						</CardHeader>
+						<CardContent className="p-4">
+							<CardDescription>
+								This is a rather short description of this
+								community.
+							</CardDescription>
+							<dl className="divide-border divide-y py-4">
+								<AboutItem title="Members">1,234</AboutItem>
+								<AboutItem title="Online">123</AboutItem>
+								<AboutItem title="Created">
+									2 years ago
+								</AboutItem>
+								<div className="text-foreground/70 py-2 text-center text-sm xl:py-3">
+									You created this community
+								</div>
+							</dl>
+							<Link
+								className={buttonStyles({ fullWidth: true })}
+								href={`/c/${slug}/submit`}
+							>
+								Create a Post
+							</Link>
+						</CardContent>
+					</Card>
+					<Card>
+						<CardHeader className="p-4">
+							<CardTitle className="text-base">
+								Community Rules
+							</CardTitle>
+						</CardHeader>
+						<CardContent className="space-y-4 p-4 pt-0">
+							<dl className="divide-border divide-y text-sm leading-6 *:py-2 first:*:pt-0 last:*:pb-0 xl:*:py-2.5">
+								<RuleItem index={1} title="Rule 1">
+									No Spam
+								</RuleItem>
+								<RuleItem index={2} title="Rule 2">
+									No NSFW
+								</RuleItem>
+								<RuleItem index={3} title="Rule 3" />
+							</dl>
+						</CardContent>
+					</Card>
+				</div>
 			</div>
 		</>
 	);
 };
+
+function AboutItem({ children, title }: AboutProps) {
+	return (
+		<div className="flex justify-between gap-x-4 py-2 text-sm xl:py-3">
+			<dt className="text-foreground/70">{title}</dt>
+			<dd className="text-foreground">{children}</dd>
+		</div>
+	);
+}
+
+function RuleItem({ children, index, title }: RuleProps) {
+	return (
+		<Collapsible className="w-full justify-between gap-x-4 overflow-hidden">
+			<CollapsibleTrigger asChild>
+				<dt
+					className={cn(
+						"text-foreground/70 select-none",
+						children && "cursor-pointer",
+					)}
+				>
+					<span>
+						{index}. {title}
+					</span>
+				</dt>
+			</CollapsibleTrigger>
+			{children && (
+				<CollapsibleContent asChild>
+					<dd className="text-foreground">{children}</dd>
+				</CollapsibleContent>
+			)}
+		</Collapsible>
+	);
+}
