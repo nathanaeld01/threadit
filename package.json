@@ -11,10 +11,10 @@
 		"ui-add": "pnpm -F ui ui-add"
 	},
 	"devDependencies": {
-		"@threadit/prettier": "workspace:*",
 		"@threadit/eslint": "workspace:*",
+		"@threadit/prettier": "workspace:*",
 		"prettier": "^3.2.5",
-		"turbo": "^1.13.3"
+		"turbo": "^2.0.3"
 	},
 	"packageManager": "pnpm@9.1.3",
 	"engines": {
