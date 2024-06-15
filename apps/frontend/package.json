@@ -10,9 +10,10 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@threadit/forms": "workspace:*",
 		"@threadit/ui": "workspace:*",
 		"@threadit/utils": "workspace:*",
-		"@threadit/forms": "workspace:*",
+		"html-react-parser": "^5.1.10",
 		"next": "14.2.3",
 		"next-themes": "^0.3.0",
 		"react": "^18.3.1",
