@@ -1,3 +1,5 @@
+import type { ContentType } from "@/components/post/helpers";
+
 interface IUser {
 	avatar: string;
 	name?: string | undefined;
@@ -18,10 +20,9 @@ interface ICommunity {
 interface IPost {
 	author: IUser;
 	community: ICommunity;
-	content?: string | undefined;
+	content?: ContentType[] | undefined;
 	createdAt: Date;
 	id: string;
-	image?: string | undefined;
 	title: string;
 }
 

@@ -1,10 +1,11 @@
 "use client";
 
-import parse from "html-react-parser";
 import { useEffect, useState } from "react";
 
+import { type ContentType, parsePostData } from "@/components/post/helpers";
+
 interface Props {
-	content: string;
+	content?: ContentType[];
 }
 
 export const Content = ({ content }: Props) => {
@@ -12,7 +13,7 @@ export const Content = ({ content }: Props) => {
 
 	useEffect(() => setMounted(true), []);
 
-	if (!mounted) return null;
+	if (!mounted || !content) return null;
 
-	return <div className="py-4">{parse(content)}</div>;
+	return <div className="py-4">{parsePostData(content)}</div>;
 };

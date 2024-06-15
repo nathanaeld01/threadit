@@ -48,7 +48,7 @@ export default ({ params: { id, slug } }: Props) => {
 						</div>
 					</div>
 				</div>
-				<Content content={post?.content ?? ""} />
+				<Content content={post?.content} />
 			</article>
 			<section className="border-border bg-card divide-border h-10 divide-x overflow-hidden rounded-lg border">
 				<PostVoting id={id} initialVotes={0} />

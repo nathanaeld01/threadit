@@ -82,6 +82,10 @@ export const users: IUser[] = [
 		avatar: "https://www.redditstatic.com/avatars/defaults/v2/avatar_default_0.png",
 		username: "No_Band_5399",
 	},
+	{
+		avatar: "https://i.redd.it/snoovatar/avatars/2f0051d8-c152-407b-9312-97686b6870e0.png",
+		username: "J_0_5",
+	},
 ];
 
 export const posts: IPost[] = [
@@ -95,18 +99,61 @@ export const posts: IPost[] = [
 	{
 		author: users.find((u) => u.username === "No_Band_5399")!,
 		community: communities.find((c) => c.slug === "thevenomsite")!,
+		content: [
+			{
+				children: "https://www.youtube.com/watch?v=STScKOUpXR8",
+				type: "video",
+			},
+		],
 		createdAt: new Date("06-03-2024"),
 		id: "1d73zy9",
-		image: "https://img.youtube.com/vi/STScKOUpXR8/maxresdefault.jpg",
 		title: "venom 3 last dance trailer",
 	},
 	{
 		author: users.find((u) => u.username === "cosm1c15")!,
 		community: communities.find((c) => c.slug === "destiny2")!,
-		content:
-			"<p>did it with a random getting over the anxiety was...... really hard , but I DID IT GOT APHOTHEOSIS AND STAR EATER WARLOCK BOND</p><p>YAY!!!</p><p>its so goddamn easy once you actually start talking with someone , you don't even feel any resistance from your &quot; social anxiety &quot;</p><p>im not gonna farm chest from now on though , got the guy and his group on discord , gonna run the mission again tmrw and grind it out</p>",
+		content: [
+			{
+				children:
+					"did it with a random getting over the anxiety was...... really hard, but",
+				type: "paragraph",
+			},
+			{
+				children:
+					"I DID IT GOT APHOTHEOSIS AND STAR EATER WARLOCK BOND",
+				type: "paragraph",
+			},
+			{
+				children: "YAY!!!",
+				type: "paragraph",
+			},
+			{
+				children:
+					"its so goddamn easy once you actually start talking with someone, you don't even feel any resistance from your &quot; social anxiety &quot;",
+				type: "paragraph",
+			},
+			{
+				children:
+					"im not gonna farm chest from now on though, got the guy and his group on discord, gonna run the mission again tmrw and grind it out",
+				type: "paragraph",
+			},
+		],
 		createdAt: new Date("06-15-2024"),
 		id: "1dfsvak",
 		title: "DID THE DUAL DESTINY MISSION TODAY",
+	},
+	{
+		author: users.find((u) => u.username === "J_0_5")!,
+		community: communities.find((c) => c.slug === "destiny2")!,
+		content: [
+			{
+				children:
+					"https://external-preview.redd.it/so-are-the-pyramids-offering-escort-services-now-v0-Jm_t2U0HU-la7oT3vqtl1K6ZYY-XlMknXMv3Z0AWi9o.jpg?auto=webp&s=aa13c2a138f2679c200d0940e0eb859f7640ac19",
+				type: "image",
+			},
+		],
+		createdAt: new Date("06-14-2024"),
+		id: "1dgi5i2",
+		title: "So are the pyramids offering escort services now? ",
 	},
 ];
