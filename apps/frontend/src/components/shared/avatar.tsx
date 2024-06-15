@@ -7,7 +7,7 @@ import {
 interface Props {
 	className?: string;
 	name: string;
-	src: string;
+	src: string | undefined;
 }
 
 export const Avatar = ({ className, name, src }: Props) => {

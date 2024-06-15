@@ -4,8 +4,8 @@ import { Button, buttonStyles } from "@threadit/ui/button";
 import { Dropdown, DropdownMenu, DropdownTrigger } from "@threadit/ui/dropdown";
 import { cn } from "@threadit/utils/class";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Icon } from "@/components/shared/icons";
 
@@ -17,7 +17,6 @@ interface ItemProps {
 	children: React.ReactNode;
 	href: string;
 	icon: string;
-	query?: string | undefined;
 }
 
 export const Header = ({ children }: Props) => {
@@ -60,17 +59,10 @@ export const Header = ({ children }: Props) => {
 	);
 };
 
-export const HeaderItem = ({ children, href, icon, query }: ItemProps) => {
+export const HeaderItem = ({ children, href, icon }: ItemProps) => {
 	const pathname = usePathname();
-	const searchParams = useSearchParams();
 
-	const active = useMemo(() => {
-		if (pathname === href) {
-			if (!query && searchParams.get("filter") === null) return true;
-			if (searchParams.get("filter") === query) return true;
-			return false;
-		}
-	}, [pathname, href, query, searchParams]);
+	const active = pathname === href;
 
 	return (
 		<Link
@@ -79,7 +71,7 @@ export const HeaderItem = ({ children, href, icon, query }: ItemProps) => {
 				"h-10 w-full justify-start gap-2.5 rounded-none md:w-28 md:justify-center",
 				active && "bg-secondary/10",
 			)}
-			href={query ? { pathname: href, query: { filter: query } } : href}
+			href={href}
 		>
 			<Icon icon={icon} />
 			{children}
