@@ -6,7 +6,14 @@ const CreateCommunityValidator = z.object({
 	slug: Slug,
 });
 
-type CreateCommunityType = z.infer<typeof CreateCommunityValidator>;
+const CreatePostValidator = z.object({
+	content: z.any(),
+	slug: Slug,
+	title: z.string().min(5).max(125),
+});
 
-export { CreateCommunityValidator };
-export type { CreateCommunityType };
+type CreateCommunityType = z.infer<typeof CreateCommunityValidator>;
+type CreatePostType = z.infer<typeof CreatePostValidator>;
+
+export { CreateCommunityValidator, CreatePostValidator };
+export type { CreateCommunityType, CreatePostType };
