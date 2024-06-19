@@ -6,6 +6,10 @@ interface Props {
 	};
 }
 
+export const metadata = {
+	title: "Create Post",
+};
+
 export default ({ params: { slug } }: Props) => {
 	return (
 		<>

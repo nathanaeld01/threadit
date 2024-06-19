@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@threadit/ui/button";
+import { type EditorConfig } from "@threadit/ui/editor";
 import { Form, FormControl, FormField, useForm } from "@threadit/ui/form";
 import { Input } from "@threadit/ui/input";
-import { postTools } from "@threadit/utils/tools";
 import { CreatePostValidator } from "@threadit/validators/forms";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
+import type { ToolConstructable } from "@threadit/ui/editor";
 import type { CreatePostType } from "@threadit/validators/forms";
 
 const Editor = dynamic(
@@ -19,6 +22,71 @@ interface Props {
 	slug: string;
 }
 
+type Tools = Record<string, ToolConstructable>;
+
+function useTools(): EditorConfig["tools"] {
+	const [tools, setTools] = useState<Tools>({});
+
+	useEffect(() => {
+		async function getTools() {
+			const Header = (await import("@threadit/utils/tools/header"))
+				.default;
+			const Embed = (await import("@threadit/utils/tools/embed")).default;
+			const Table = (await import("@threadit/utils/tools/table")).default;
+			const Code = (await import("@threadit/utils/tools/code")).default;
+			const Checklist = (await import("@threadit/utils/tools/checklist"))
+				.default;
+			const SimpleImage = (
+				await import("@threadit/utils/tools/simple-image")
+			).default;
+			const Quote = (await import("@threadit/utils/tools/quote")).default;
+			const Underline = (await import("@threadit/utils/tools/underline"))
+				.default;
+
+			setTools({
+				Checklist,
+				Code,
+				Embed,
+				Header,
+				Quote,
+				SimpleImage,
+				Table,
+				Underline,
+			});
+		}
+
+		void getTools();
+	}, []);
+
+	return {
+		checklist: {
+			class: tools?.Checklist,
+			inlineToolbar: true,
+		},
+		code: tools.Code!,
+		embed: {
+			class: tools.Embed,
+			config: {
+				services: {
+					youtube: true,
+				},
+			},
+		},
+		header: {
+			class: tools.Header,
+			config: {
+				defaultLevel: 3,
+				levels: [2, 3, 4],
+				placeholder: "Enter a header",
+			},
+		},
+		image: tools.SimpleImage!,
+		quote: tools.Quote!,
+		table: tools.Table!,
+		underline: tools.Underline!,
+	};
+}
+
 export const CreatePost = ({ slug }: Props) => {
 	const form = useForm<CreatePostType>({
 		defaultValues: {
@@ -28,6 +96,7 @@ export const CreatePost = ({ slug }: Props) => {
 		},
 		resolver: zodResolver(CreatePostValidator),
 	});
+	const tools = useTools();
 
 	const {
 		control,
@@ -56,7 +125,7 @@ export const CreatePost = ({ slug }: Props) => {
 					name="content"
 					render={({ field }) => (
 						<FormControl {...field}>
-							<Editor placeholder="Content" tools={postTools} />
+							<Editor placeholder="Content" tools={tools} />
 						</FormControl>
 					)}
 				/>

@@ -101,8 +101,13 @@ export const posts: IPost[] = [
 		community: communities.find((c) => c.slug === "thevenomsite")!,
 		content: [
 			{
-				children: "https://www.youtube.com/watch?v=STScKOUpXR8",
-				type: "video",
+				data: {
+					embed: "https://www.youtube.com/embed/STScKOUpXR8",
+					service: "youtube",
+					source: "https://www.youtube.com/watch?v=STScKOUpXR8",
+				},
+				id: "gazJvtuTjA",
+				type: "embed",
 			},
 		],
 		createdAt: new Date("06-03-2024"),
@@ -114,27 +119,32 @@ export const posts: IPost[] = [
 		community: communities.find((c) => c.slug === "destiny2")!,
 		content: [
 			{
-				children:
-					"did it with a random getting over the anxiety was...... really hard, but",
+				data: {
+					text: "did it with a random getting over the anxiety was...... really hard, but",
+				},
+				id: "Yuqn5qmNyY",
 				type: "paragraph",
 			},
 			{
-				children:
-					"I DID IT GOT APHOTHEOSIS AND STAR EATER WARLOCK BOND",
+				data: {
+					text: "I DID IT GOT APHOTHEOSIS AND STAR EATER WARLOCK BOND",
+				},
+				id: "e6UfWKQU94",
+				type: "paragraph",
+			},
+			{ data: { text: "YAY!!!" }, id: "vHzvag4ZgX", type: "paragraph" },
+			{
+				data: {
+					text: `its\n so goddamn easy once you actually start talking with someone, you don't\n even feel any resistance from your " social anxiety "`,
+				},
+				id: "G6Xn3trLti",
 				type: "paragraph",
 			},
 			{
-				children: "YAY!!!",
-				type: "paragraph",
-			},
-			{
-				children:
-					"its so goddamn easy once you actually start talking with someone, you don't even feel any resistance from your &quot; social anxiety &quot;",
-				type: "paragraph",
-			},
-			{
-				children:
-					"im not gonna farm chest from now on though, got the guy and his group on discord, gonna run the mission again tmrw and grind it out",
+				data: {
+					text: "im\n not gonna farm chest from now on though, got the guy and his group on \ndiscord, gonna run the mission again tmrw and grind it out",
+				},
+				id: "WaIbhDkMia",
 				type: "paragraph",
 			},
 		],

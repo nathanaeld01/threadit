@@ -5,7 +5,13 @@ import { forwardRef, useEffect } from "react";
 
 import { useForwardRef } from "../use-forward-ref";
 
-import type { EditorConfig, OutputData } from "@editorjs/editorjs";
+import type {
+	EditorConfig,
+	OutputBlockData,
+	OutputData,
+	ToolConstructable,
+	ToolSettings,
+} from "@editorjs/editorjs";
 
 interface Props {
 	data?: OutputData;
@@ -50,3 +56,5 @@ export const Editor = forwardRef<EditorJS, Props>((props, ref) => {
 });
 
 Editor.displayName = "Editor";
+
+export type { EditorConfig, OutputBlockData, ToolConstructable, ToolSettings };

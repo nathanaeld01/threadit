@@ -1,4 +1,5 @@
 import type { ContentType } from "@/components/post/helpers";
+import type { OutputBlockData } from "@threadit/ui/editor";
 
 interface IUser {
 	avatar: string;
@@ -20,7 +21,7 @@ interface ICommunity {
 interface IPost {
 	author: IUser;
 	community: ICommunity;
-	content?: ContentType[] | undefined;
+	content?: (ContentType | OutputBlockData)[] | undefined;
 	createdAt: Date;
 	id: string;
 	title: string;
