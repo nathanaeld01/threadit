@@ -1,3 +1,4 @@
+import tailwindTypography from "@tailwindcss/typography";
 import tailwindAnimate from "tailwindcss-animate";
 
 import type { Config } from "tailwindcss";
@@ -5,7 +6,7 @@ import type { Config } from "tailwindcss";
 export default {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	darkMode: ["class"],
-	plugins: [tailwindAnimate],
+	plugins: [tailwindAnimate, tailwindTypography],
 	theme: {
 		extend: {
 			animation: {

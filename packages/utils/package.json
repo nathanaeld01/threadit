@@ -8,6 +8,14 @@
 	},
 	"scripts": {},
 	"dependencies": {
+		"@editorjs/checklist": "^1.6.0",
+		"@editorjs/code": "^2.9.0",
+		"@editorjs/embed": "^2.7.4",
+		"@editorjs/header": "^2.8.1",
+		"@editorjs/quote": "^2.6.0",
+		"@editorjs/simple-image": "^1.6.0",
+		"@editorjs/table": "^2.3.0",
+		"@editorjs/underline": "^1.1.0",
 		"clsx": "^2.1.1",
 		"date-fns": "^3.6.0",
 		"tailwind-merge": "^2.3.0"

@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@threadit/ui/button";
 import { Form, FormControl, FormField, useForm } from "@threadit/ui/form";
 import { Input } from "@threadit/ui/input";
+import { postTools } from "@threadit/utils/tools";
 import { CreatePostValidator } from "@threadit/validators/forms";
 import dynamic from "next/dynamic";
 
@@ -28,7 +29,11 @@ export const CreatePost = ({ slug }: Props) => {
 		resolver: zodResolver(CreatePostValidator),
 	});
 
-	const { control, handleSubmit } = form;
+	const {
+		control,
+		formState: { isDirty, isValid },
+		handleSubmit,
+	} = form;
 
 	const createPostHandler = handleSubmit((values) => {
 		console.log(values.content);
@@ -51,11 +56,13 @@ export const CreatePost = ({ slug }: Props) => {
 					name="content"
 					render={({ field }) => (
 						<FormControl {...field}>
-							<Editor placeholder="Content" tools={{}} />
+							<Editor placeholder="Content" tools={postTools} />
 						</FormControl>
 					)}
 				/>
-				<Button type="submit">Submit</Button>
+				<Button disabled={!isDirty && !isValid} type="submit">
+					Submit
+				</Button>
 			</form>
 		</Form>
 	);

@@ -100,6 +100,14 @@ html {
 	@apply hidden w-full max-w-[350px] space-y-2 lg:block xl:space-y-4;
 }
 
+.ce-block__content {
+	@apply prose dark:prose-invert;
+}
+
+.codex-editor__redactor {
+	@apply min-h-[300px] !pb-0;
+}
+
 .ce-paragraph[data-placeholder]:empty::before {
 	@apply !text-muted text-sm;
 }
