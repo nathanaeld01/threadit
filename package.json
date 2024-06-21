@@ -8,7 +8,8 @@
 		"type-check": "turbo type-check",
 		"clean": "turbo clean",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"ui-add": "pnpm -F ui ui-add"
+		"ui-add": "pnpm -F ui ui-add",
+		"deploy": "cd ../.. && turbo run build --scope=frontend --includeDependencies --no-deps"
 	},
 	"devDependencies": {
 		"@threadit/eslint": "workspace:*",
