@@ -33,6 +33,9 @@ export const Editor = forwardRef<EditorJS, Props>((props, ref) => {
 						props.onChange?.(content);
 					});
 				},
+				onReady: () => {
+					console.log("Editor is ready");
+				},
 				placeholder: props.placeholder,
 				tools: props.tools,
 			});
