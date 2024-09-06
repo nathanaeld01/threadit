@@ -1,4 +1,4 @@
-import { CreateCommunity } from "@threadit/forms/community";
+import CreateCommunity from "@threadit/forms/create-community";
 import { Card, CardContent, CardHeader, CardTitle } from "@threadit/ui/card";
 
 export const metadata = {

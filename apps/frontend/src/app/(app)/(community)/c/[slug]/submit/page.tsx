@@ -1,4 +1,8 @@
-import { CreatePost } from "@threadit/forms/community";
+import dynamic from "next/dynamic";
+
+const CreatePost = dynamic(() => import("@threadit/forms/create-post"), {
+	ssr: false,
+});
 
 interface Props {
 	params: {

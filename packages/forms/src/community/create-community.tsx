@@ -13,7 +13,7 @@ import {
 import { Input } from "@threadit/ui/input";
 import { CreateCommunityValidator } from "@threadit/validators/forms";
 
-export const CreateCommunity = () => {
+const CreateCommunity = () => {
 	const form = useForm({
 		defaultValues: {
 			slug: "",
@@ -75,3 +75,5 @@ export const CreateCommunity = () => {
 		</Form>
 	);
 };
+
+export default CreateCommunity;

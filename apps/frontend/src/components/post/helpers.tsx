@@ -1,4 +1,3 @@
-import parse from "html-react-parser";
 import Image from "next/image";
 
 import { VideoPlayer } from "../shared/video";
@@ -20,7 +19,7 @@ const parser = (item: ContentType) => {
 				/>
 			</div>
 		),
-		paragraph: <p className="mb-2">{parse(item.children)}</p>,
+		paragraph: <p className="mb-2">{item.children}</p>,
 		video: (
 			<div className="flex justify-center">
 				<VideoPlayer

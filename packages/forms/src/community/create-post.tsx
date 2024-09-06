@@ -87,7 +87,7 @@ function useTools(): EditorConfig["tools"] {
 	};
 }
 
-export const CreatePost = ({ slug }: Props) => {
+const CreatePost = ({ slug }: Props) => {
 	const form = useForm<CreatePostType>({
 		defaultValues: {
 			content: "",
@@ -136,3 +136,5 @@ export const CreatePost = ({ slug }: Props) => {
 		</Form>
 	);
 };
+
+export default CreatePost;
