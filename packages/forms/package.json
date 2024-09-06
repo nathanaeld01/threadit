@@ -4,7 +4,8 @@
 	"private": true,
 	"type": "module",
 	"exports": {
-		"./*": "./src/*/index.tsx"
+		"./create-post": "./src/community/create-post.tsx",
+		"./create-community": "./src/community/create-community.tsx"
 	},
 	"scripts": {},
 	"dependencies": {

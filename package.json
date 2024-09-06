@@ -14,8 +14,8 @@
 	"devDependencies": {
 		"@threadit/eslint": "workspace:*",
 		"@threadit/prettier": "workspace:*",
-		"prettier": "^3.2.5",
-		"turbo": "^2.0.4"
+		"prettier": "^3.3.3",
+		"turbo": "^2.1.1"
 	},
 	"packageManager": "pnpm@9.3.0",
 	"engines": {
