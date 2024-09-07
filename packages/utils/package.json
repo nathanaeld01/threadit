@@ -12,6 +12,7 @@
 		"@editorjs/code": "^2.9.0",
 		"@editorjs/embed": "^2.7.4",
 		"@editorjs/header": "^2.8.1",
+		"@editorjs/image": "^2.9.3",
 		"@editorjs/quote": "^2.6.0",
 		"@editorjs/simple-image": "^1.6.0",
 		"@editorjs/table": "^2.3.0",

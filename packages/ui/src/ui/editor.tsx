@@ -1,9 +1,7 @@
 "use client";
 
 import EditorJS from "@editorjs/editorjs";
-import { forwardRef, useEffect } from "react";
-
-import { useForwardRef } from "../use-forward-ref";
+import { useEffect, useRef } from "react";
 
 import type {
 	EditorConfig,
@@ -20,32 +18,33 @@ interface Props {
 	tools: EditorConfig["tools"];
 }
 
-export const Editor = forwardRef<EditorJS, Props>((props, ref) => {
-	const editorRef = useForwardRef<EditorJS>(ref);
+const Editor = ({ data, onChange, placeholder, tools }: Props) => {
+	const ref = useRef<EditorJS>();
 
 	useEffect(() => {
-		if (!editorRef.current) {
+		if (!ref.current) {
 			const editor = new EditorJS({
-				data: props.data,
+				data: data ?? undefined,
 				holder: "editorjs",
 				onChange: (api) => {
-					void api.saver.save().then((content) => {
-						props.onChange?.(content);
-					});
+					(async () => {
+						const data = await api.saver.save();
+						onChange?.(data);
+					})();
 				},
 				onReady: () => {
 					console.log("Editor is ready");
 				},
-				placeholder: props.placeholder,
-				tools: props.tools,
+				placeholder: placeholder,
+				tools: tools,
 			});
 
-			editorRef.current = editor;
+			ref.current = editor;
 		}
 
 		return () => {
-			if (editorRef.current?.destroy) {
-				editorRef.current.destroy();
+			if (ref.current?.destroy) {
+				ref.current.destroy();
 			}
 		};
 	}, []);
@@ -56,8 +55,9 @@ export const Editor = forwardRef<EditorJS, Props>((props, ref) => {
 			id="editorjs"
 		/>
 	);
-});
+};
 
 Editor.displayName = "Editor";
 
 export type { EditorConfig, OutputBlockData, ToolConstructable, ToolSettings };
+export default Editor;
