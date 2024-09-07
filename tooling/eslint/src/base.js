@@ -1,22 +1,18 @@
 import tseslint from "typescript-eslint";
 import eslint from "@eslint/js";
-import perfectionistPlugin from "eslint-plugin-perfectionist";
-import perfectionistNatural from "eslint-plugin-perfectionist/configs/recommended-natural";
-import prettierConfig from "eslint-config-prettier";
-import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
+import perfectionist from "eslint-plugin-perfectionist";
+import prettier from "eslint-config-prettier";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default tseslint.config(
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
-	...tseslint.configs.recommendedTypeChecked,
 	...tseslint.configs.stylisticTypeChecked,
-	perfectionistNatural,
+	perfectionist.configs["recommended-natural"],
 	{
 		files: ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.jsx"],
-		plugins: {
-			perfectionist: perfectionistPlugin,
-		},
 		rules: {
+			"sort-imports": "off",
 			"@typescript-eslint/no-unused-vars": [
 				"warn",
 				{
@@ -49,7 +45,7 @@ export default tseslint.config(
 						["internal", "parent", "sibling", "index"],
 						["type"],
 					],
-					"internal-pattern": ["@/**"],
+					internalPattern: ["@/**"],
 				},
 			],
 		},
@@ -58,6 +54,6 @@ export default tseslint.config(
 		linterOptions: { reportUnusedDisableDirectives: true },
 		languageOptions: { parserOptions: { project: true } },
 	},
-	prettierConfig,
-	prettierPluginRecommended,
+	prettier,
+	prettierRecommended,
 );
