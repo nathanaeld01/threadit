@@ -92,6 +92,20 @@ export const posts: IPost[] = [
 	{
 		author: users.find((u) => u.username === "djtoad03")!,
 		community: communities.find((c) => c.slug === "destiny2")!,
+		content: [
+			{
+				data: {
+					caption: "",
+					embed: "https://www.youtube.com/embed/dZrxWFrd1zQ?",
+					height: 320,
+					service: "youtube",
+					source: "https://youtu.be/dZrxWFrd1zQ?si=5ZTB31Mr3UYexEVb",
+					width: 580,
+				},
+				id: "sWEe1C4xz1",
+				type: "embed",
+			},
+		],
 		createdAt: new Date("05-28-2024"),
 		id: "1d742j1",
 		title: "Destiny 2: The Final Shape | Launch Trailer",
@@ -102,11 +116,14 @@ export const posts: IPost[] = [
 		content: [
 			{
 				data: {
+					caption: "",
 					embed: "https://www.youtube.com/embed/STScKOUpXR8",
+					height: 320,
 					service: "youtube",
 					source: "https://www.youtube.com/watch?v=STScKOUpXR8",
+					width: 580,
 				},
-				id: "gazJvtuTjA",
+				id: "vunvJsg43n",
 				type: "embed",
 			},
 		],
@@ -122,29 +139,28 @@ export const posts: IPost[] = [
 				data: {
 					text: "did it with a random getting over the anxiety was...... really hard, but",
 				},
-				id: "Yuqn5qmNyY",
+				id: "vWucl1ZqeT",
 				type: "paragraph",
 			},
 			{
 				data: {
 					text: "I DID IT GOT APHOTHEOSIS AND STAR EATER WARLOCK BOND",
 				},
-				id: "e6UfWKQU94",
-				type: "paragraph",
-			},
-			{ data: { text: "YAY!!!" }, id: "vHzvag4ZgX", type: "paragraph" },
-			{
-				data: {
-					text: `its\n so goddamn easy once you actually start talking with someone, you don't\n even feel any resistance from your " social anxiety "`,
-				},
-				id: "G6Xn3trLti",
+				id: "aDHHkqtukj",
 				type: "paragraph",
 			},
 			{
 				data: {
-					text: "im\n not gonna farm chest from now on though, got the guy and his group on \ndiscord, gonna run the mission again tmrw and grind it out",
+					text: 'its so goddamn easy once you actually start talking with someone, you don\'t even feel any resistance from your " social anxiety "',
 				},
-				id: "WaIbhDkMia",
+				id: "UafQ0RjQdE",
+				type: "paragraph",
+			},
+			{
+				data: {
+					text: "im not gonna farm chest from now on though, got the guy and his group on discord, gonna run the mission again tmrw and grind it out",
+				},
+				id: "JLWtAqEhOT",
 				type: "paragraph",
 			},
 		],
@@ -157,8 +173,14 @@ export const posts: IPost[] = [
 		community: communities.find((c) => c.slug === "destiny2")!,
 		content: [
 			{
-				children:
-					"https://external-preview.redd.it/so-are-the-pyramids-offering-escort-services-now-v0-Jm_t2U0HU-la7oT3vqtl1K6ZYY-XlMknXMv3Z0AWi9o.jpg?auto=webp&s=aa13c2a138f2679c200d0940e0eb859f7640ac19",
+				data: {
+					caption: "",
+					stretched: false,
+					url: "https://external-preview.redd.it/so-are-the-pyramids-offering-escort-services-now-v0-Jm_t2U0HU-la7oT3vqtl1K6ZYY-XlMknXMv3Z0AWi9o.jpg",
+					withBackground: false,
+					withBorder: false,
+				},
+				id: "ub1IeNuD2A",
 				type: "image",
 			},
 		],
